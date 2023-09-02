@@ -14,6 +14,22 @@ const useActive = (cb) => {
   }
 }
 
+// пишу с телефона
+// хук - первое что пришло в голову,
+// но в данном случае можно было бы использовать
+// компонент:
+// const Wrapper = ({ children, mouseEnterCallbak }) => {
+//    const props = useActive(mouseEnterCallbak);
+//    return <div {...props}>{children}</div>
+// }
+// разбивать на хук или нет... 
+// это решается ситуативно,
+// здесь можно обойтись без хука
+// кроме того, я бы наверное вынес Wrapper за пределы блоков.
+// но это тоже ситаутивно
+// в таком случае, мы не будем пробрасывать логику в компоненты, где она не требуется
+// 
+
 export const Block1 = ({ mouseEnterCallbak, imgSrc, imgAlt }) => {
   const props = useActive(mouseEnterCallbak);
 
