@@ -1,8 +1,10 @@
 import { Fragment, memo } from 'react';
 
-const MainComponent = () => {
-    const makeLog = () => console.log('hi from MainComponent'); // function to make logs from MainComponent
+const makeLog = () => console.log('hi from MainComponent'); // function to make logs from MainComponent
 
+const MainComponent = () => {
+    // also, we can use useCallback, but here is static function
+    // const makeLog = useCallback(() => console.log('hi from MainComponent'), []);
     return (
         <Fragment>
             <ChildComponent makeLog={makeLog} />
