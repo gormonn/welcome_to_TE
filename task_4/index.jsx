@@ -1,45 +1,44 @@
 import { useState } from "react";
 
-export const Block1 = ({ mouseEnterCallbak, imgSrc, imgAlt }) => {
-  const [isActive, setActive] = useState(false);
+const useActive = (cb) => {
+  const [isActive, setActive] = useState(isActiveDefault);
 
   const mouseEnterHandler = () => {
     setActive(true);
-    mouseEnterCallbak();
+    cb.?();
   };
 
+  return {
+    onMouseEnter: mouseEnterHandler,
+    className: isActive ? "active" : ""
+  }
+}
+
+export const Block1 = ({ mouseEnterCallbak, imgSrc, imgAlt }) => {
+  const props = useActive(mouseEnterCallbak);
+
   return (
-    <div onMouseEnter={mouseEnterHandler} className={isActive ? "active" : ""}>
+    <div {...props}>
       <img src={imgSrc} alt={imgAlt} />
     </div>
   );
 };
 
 export const Block2 = ({ mouseEnterCallbak, content }) => {
-  const [isActive, setActive] = useState(false);
-
-  const mouseEnterHandler = () => {
-    setActive(true);
-    mouseEnterCallbak();
-  };
+  const props = useActive(mouseEnterCallbak);
 
   return (
-    <div onMouseEnter={mouseEnterHandler} className={isActive ? "active" : ""}>
+    <div {...props}>
       <p>{content}</p>
     </div>
   );
 };
 
 export const Block3 = ({ mouseEnterCallbak, userData }) => {
-  const [isActive, setActive] = useState(false);
-
-  const mouseEnterHandler = () => {
-    setActive(true);
-    mouseEnterCallbak();
-  };
+  const props = useActive(mouseEnterCallbak);
 
   return (
-    <div onMouseEnter={mouseEnterHandler} className={isActive ? "active" : ""}>
+    <div {...props}>
       <address>
         country: {userData.country}, street: {userData.street}
       </address>
