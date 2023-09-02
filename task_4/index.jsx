@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useActive = (cb) => {
-  const [isActive, setActive] = useState(isActiveDefault);
+  const [isActive, setActive] = useState(false);
 
   const mouseEnterHandler = () => {
     setActive(true);
